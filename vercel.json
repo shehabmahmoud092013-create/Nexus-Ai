@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/nexus.py": {
+      "runtime": "python3.9"
+    }
+  }
+}
