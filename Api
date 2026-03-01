@@ -1,0 +1,20 @@
+import os
+from openai import OpenAI
+
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+def handler(request):
+    data = request.json()
+    message = data.get("message")
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "user", "content": message}
+        ]
+    )
+
+    return {
+        "statusCode": 200,
+        "body": response.choices[0].message.content
+    }
